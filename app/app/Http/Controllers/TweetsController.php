@@ -8,6 +8,17 @@ use App\Tweet;
 class TweetsController extends Controller
 {
     //
+
+
+    public function index()
+    {
+        $tweets = Tweet::latest()->get();
+
+        return view('home',[
+            'tweets' => auth()->user()->timeline(),
+        ]);
+    }
+
     public function store()
     {
 
