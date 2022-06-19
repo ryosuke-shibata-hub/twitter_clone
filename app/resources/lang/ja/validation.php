@@ -148,6 +148,7 @@ return [
     'attributes' => [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'body' => 'ツイート内容'
     ],
 
 ];
