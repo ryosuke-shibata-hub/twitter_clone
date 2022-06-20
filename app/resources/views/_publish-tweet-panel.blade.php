@@ -15,11 +15,11 @@
                             <img
                                 class="rounded-full mr-2"
                                 width="50"
-                                height="40"
+                                height="50"
                                 src="{{ auth()->user()->avatar }}"
                                 alt="your avatar">
 
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 rounded-lg shadow px-10 text-sm text-white h-10">Tweet</button>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 rounded-full shadow px-10 text-sm text-white h-10">Tweet</button>
                         </footer>
                 </form>
                 @error('body')
