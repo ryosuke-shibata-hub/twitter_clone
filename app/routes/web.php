@@ -14,14 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// Rute::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function ()
 {
-   Route::get('tweets', 'TweetsController@index')->name('home');
+    Route::get('tweets', 'TweetsController@index')->name('home');
     Route::post('/tweets','TweetsController@store')->name('tweet');
+
+    Route::post('profiles/{user}/follow', 'FollowController@store')->name('following');
 });
 
 Route::get('/profiles/{user}','ProfilesController@show')->name('profiles.show');
 Auth::routes();
-
-// Rute::get('/home', 'HomeController@index')->name('home');
