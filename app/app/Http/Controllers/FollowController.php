@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class FollowController extends Controller
 {
-    public function store()
+    public function store(User $user)
     {
 
+        auth()->user()->togglefollow($user);
+
+        return redirect()->back();
     }
 }
