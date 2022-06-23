@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','username','avatar',
     ];
 
     /**
@@ -38,9 +38,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAvatarAttribute()
+    public function getAvatarAttribute($value)
     {
-        return "https://picsum.photos/200?u=" . $this->email;
+        return asset('storage/'.$value);
     }
 
     public function timeline()
@@ -60,12 +60,12 @@ class User extends Authenticatable
 
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'username';
     }
 
     public function path($appended = '')
     {
-        $path = route('profiles.show',$this->name);
+        $path = route('profiles.show',$this->username);
 
         return $appended ? "{$path}/{$appended}" : $path;
     }

@@ -8,10 +8,11 @@
 
         <img
         class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2"
-        style="left: 50%";
+        style="left: 50%;height:150px;"
         src="{{ $user->avatar }}"
         alt=""
-        width="150">
+        width="150"
+        >
     </div>
     <div class="flex justify-between items-center mb-6">
         <div>

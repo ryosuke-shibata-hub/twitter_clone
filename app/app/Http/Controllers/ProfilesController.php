@@ -25,4 +25,22 @@ class ProfilesController extends Controller
             'user' => $user
         ]);
     }
+
+    public function update(User $user)
+    {
+        // dd(request('avatar'));
+        $attirbute = request()->validate([
+            'username' => ['bail','required','string','max:255','unique:users','alpha_dash'],
+            'name' => ['bail','required','string','max:255'],
+            'avatar' => ['bail','required','file'],
+            'email' => ['bail','required','email','max:255','unique:users'],
+            'password' => ['bail','required','min:8','max:255','confirmed'],
+        ]);
+
+        $attirbute['avatar'] = request('avatar')->store('avatars');
+
+        $user->update($attirbute);
+
+        return redirect($user->path());
+    }
 }
