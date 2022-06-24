@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Validation\Rule;
 
 class ProfilesController extends Controller
 {
     public function show(User $user)
-
     {
         return view('profiles.show',[
             'user' => $user,
+            'tweets' => $user->tweets()->paginate(50),
         ]);
     }
 
@@ -30,14 +31,16 @@ class ProfilesController extends Controller
     {
         // dd(request('avatar'));
         $attirbute = request()->validate([
-            'username' => ['bail','required','string','max:255','unique:users','alpha_dash'],
+            'username' => ['bail','required','string','max:255','alpha_dash',Rule::unique('users')->ignore($user),],
             'name' => ['bail','required','string','max:255'],
-            'avatar' => ['bail','required','file'],
-            'email' => ['bail','required','email','max:255','unique:users'],
+            'avatar' => ['bail','file'],
+            'email' => ['bail','required','email','max:255',Rule::unique('users')->ignore($user),],
             'password' => ['bail','required','min:8','max:255','confirmed'],
         ]);
 
-        $attirbute['avatar'] = request('avatar')->store('avatars');
+        if(request('avatar')) {
+            $attirbute['avatar'] = request('avatar')->store('avatars');
+        }
 
         $user->update($attirbute);
 

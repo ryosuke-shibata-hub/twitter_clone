@@ -5,8 +5,8 @@
                             name="body"
                             class="w-full"
                             placeholder="what's up doc?"
-
-                            {{-- required --}}
+                            required
+                            autofocus
                         ></textarea>
 
                         <hr class="my-4">
@@ -18,7 +18,6 @@
                                 height="50"
                                 src="{{ auth()->user()->avatar }}"
                                 alt="your avatar">
-
                             <button type="submit" class="bg-blue-500 hover:bg-blue-600 rounded-full shadow px-10 text-sm text-white h-10">Tweet</button>
                         </footer>
                 </form>

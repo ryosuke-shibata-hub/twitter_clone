@@ -3,7 +3,7 @@
 
     <ul>
         @forelse(current_user()->follows as $user)
-            <li class="mb-4">
+            <li class="{{ $loop->last? '' : 'mb-4' }}">
                 <a href="{{ route('profiles.show',$user) }}"
                     class="flex items-center text-sm">
                     <img
