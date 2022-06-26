@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9cb59ee205.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -30,5 +31,6 @@
        </section>
        {{ $slot }}
     </div>
+    <script src="http://unpkg.com/turbolinks"></script>
 </body>
 </html>
